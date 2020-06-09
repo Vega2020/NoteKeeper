@@ -4,9 +4,11 @@ html, body {
   padding: 0;
 }
 
-.save-note {
+/*why was this turning off the save icon? */
+
+/* .save-note {
   display: none;
-}
+} */
 
 .icons i {
   margin-left: 15px;
