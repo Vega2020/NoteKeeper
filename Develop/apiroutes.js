@@ -24,20 +24,24 @@ app.use(express.static("public"));
 //ROUTES:
 
 app.get("/notes", function(req, res) {
-    res.sendFile(path.join(__dirname, "/public/notes.html"));
+    res.sendFile(path.join(__dirname, "./public/notes.html"));
     console.log("notes.html sent");
   });
 
 app.get("*", function(req, res) {
-    res.sendFile(path.join(__dirname, "/public/index.html"));
+    res.sendFile(path.join(__dirname, "./public/index.html"));
     console.log("index.html sent");
   });
 
 app.get("/api/notes", function(req, res) {
  //Should read the `db.json` file and return all saved notes as JSON
- // set the db.json as a variable?, 
- //then return the variable
- res.sendFile(path.join(__dirname,"Develop\db\db.json")) 
+ fs.readFile(__dirname + "/db/db.json", (err, data) => {
+   if (err) throw err;
+   // set the data from db.json as a variable, 
+   let db = JSON.parse(data);
+   res.send(db);
+   //then return the variable
+ });
 });
 
 //app.post("/api/notes", function(req, res) {
