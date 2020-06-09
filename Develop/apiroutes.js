@@ -24,12 +24,12 @@ app.use(express.static("public"));
 //ROUTES:
 
 app.get("/notes", function(req, res) {
-    res.sendFile(path.join(__dirname, "./public/notes.html"));
+    res.sendFile(path.join(__dirname, "public/notes.html"));
     console.log("notes.html sent");
   });
 
 app.get("*", function(req, res) {
-    res.sendFile(path.join(__dirname, "./public/index.html"));
+    res.sendFile(path.join(__dirname, "public/index.html"));
     console.log("index.html sent");
   });
 
@@ -43,6 +43,7 @@ app.get("/api/notes", function(req, res) {
    //then return the variable
  });
 });
+
 
 //app.post("/api/notes", function(req, res) {
     // Should receive a new note to save on the request body, add it to the `db.json` file, and then return the new note to the client. commented out for test purposes
@@ -59,10 +60,14 @@ app.get("/api/notes", function(req, res) {
     // Should receive a query parameter containing the id of a note to delete. This means you'll need to find a way to give each note a unique `id` when it's saved. In order to delete a note, you'll need to read all notes from the `db.json` file, remove the note with the given `id` property, and then rewrite the notes to the `db.json` file.
 //})
 
+
+
 //this tells the server to start listening and logs a notice that it is on
 app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });
+
+
 
 
   //questions for tutor/teacher: why is index.html sending three times every time notes.html sends? why is it still not loading the css? why is it getting the < syntaxerror from js line 1?
